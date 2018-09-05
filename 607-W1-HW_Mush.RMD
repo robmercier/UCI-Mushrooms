@@ -1,0 +1,57 @@
+---
+title: 'HW #1 - UCI  Mushrooms'
+author: "Robert_M"
+date: "September 4, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```{r}
+#Encoding data
+UCIMush <- "https://archive.ics.uci.edu/ml/machine-learning-databases/mushroom/agaricus-lepiota.data"
+MushData <- read.table(file=UCIMush, header=FALSE, sep = ",")
+#Seeing the data
+head(MushData)
+summary(MushData)
+#Changing the column names
+names(MushData) <- c("Classes","V2","V3","V4","V5","V6","gill-attachment","gill-spacing","gill-size","gill-color","V11","V12","V13","V14","V15","V16","V17","V18","V19","V20","V21","V22","V23")
+#Checking the changes
+head(MushData)
+#Creating the new abridged dataframe - Only gill columns
+df<-data.frame(MushData$Classes, MushData$`gill-attachment`, MushData$`gill-spacing`, MushData$`gill-size`, MushData$`gill-color`)
+#Replacing abbreviations - Letters to names
+levels(df$MushData.Classes) [levels(df$MushData.Classes)=="p"]  <- "Poison"
+levels(df$MushData.Classes) [levels(df$MushData.Classes)=="e"]  <- "edible"
+
+levels(df$MushData..gill.attachment.) [levels(df$MushData..gill.attachment.)=="a"]  <- "attached"
+levels(df$MushData..gill.attachment.) [levels(df$MushData..gill.attachment.)=="d"]  <- "descending"
+levels(df$MushData..gill.attachment.) [levels(df$MushData..gill.attachment.)=="f"]  <- "free"
+levels(df$MushData..gill.attachment.) [levels(df$MushData..gill.attachment.)=="n"]  <- "notched"
+
+levels(df$MushData..gill.spacing.) [levels(df$MushData..gill.spacing.)=="c"]  <- "close"
+levels(df$MushData..gill.spacing.) [levels(df$MushData..gill.spacing.)=="w"]  <- "crowded"
+levels(df$MushData..gill.spacing.) [levels(df$MushData..gill.spacing.)=="d"]  <- "distant"
+
+levels(df$MushData..gill.size.) [levels(df$MushData..gill.size.)=="b"]  <- "broad"
+levels(df$MushData..gill.size.) [levels(df$MushData..gill.size.)=="n"]  <- "narrow"
+
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="k"]  <- "black"
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="n"]  <- "brown"
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="b"]  <- "buff"
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="h"]  <- "cinnamon"
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="g"]  <- "gray"
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="r"]  <- "green"
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="o"]  <- "orange"
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="p"]  <- "pink"
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="u"]  <- "purple"
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="e"]  <- "red"
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="w"]  <- "white"
+levels(df$MushData..gill.color.) [levels(df$MushData..gill.color.)=="y"]  <- "yellow"
+#Final check
+print(df)
+```
+
+
+
